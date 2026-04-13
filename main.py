@@ -4,6 +4,10 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 import requests
 # API info at https://developer.riotgames.com/docs/lol
 
+#GLOBAL RIOT ID USED FOR APP
+riot_id = "Vasu#OC"
+
+
 # 2 states  "in_game" and "out_of_game"
 state = "out_of_game"
 
@@ -34,7 +38,7 @@ while True:
         # extract gamemode and champ name from the response json
         game_mode = game_stats.json()["gameMode"]
         for player in all_game_data.json()["allPlayers"]:
-            if player["riotId"] == "Vasu#OC":
+            if player["riotId"] == riot_id:
                 champion_name = player["championName"]
                 break
 
@@ -42,7 +46,7 @@ while True:
         #repeated call for live kda, cs, time
         while True:       
             try:
-                player_score = requests.get("https://127.0.0.1:2999/liveclientdata/playerscores?riotId=", params = {"riotId": "Vasu#OC"}, verify = False)
+                player_score = requests.get("https://127.0.0.1:2999/liveclientdata/playerscores?riotId=", params = {"riotId": riot_id}, verify = False)
 
                 game_stats = requests.get("https://127.0.0.1:2999/liveclientdata/gamestats", verify = False)
             except:
