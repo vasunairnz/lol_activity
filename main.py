@@ -86,8 +86,8 @@ while True:
                 state=f" {kills}/{deaths}/{assists}   |   cs = {creep_score}",
                 details= f"{champion_name}",
                 name= f"{game_mode}",
-                # large_image = f"{champion_name}",  set up later!!!
-                # large_text= f"{champion_name}",    set up later!!!
+                large_image = f"{champion_name.replace(" ", "").capitalize()}", 
+                large_text= f"{champion_name}", 
                 )
 
             print(f"{time.ctime()}  {kills}/{deaths}/{assists} | cs = {creep_score} | {champion_name} | {game_mode}")
